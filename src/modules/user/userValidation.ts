@@ -22,4 +22,21 @@ export const userValidationSchema = z.object({
   profile: z.string().optional(),
 });
 
+export const loginValidationSchema = z.object({
+  email: z
+    .string({
+      required_error: "Email is required",
+    })
+    .email({ message: "Invalid email address" }),
+  password: z
+    .string({
+      required_error: "password is required",
+    })
+    .min(6, { message: "Password must be at least 6 characters long" })
+    .max(50, {
+      message: "Password can't be more then 50 characters long",
+    }),
+});
+
 export type TUser = z.infer<typeof userValidationSchema>;
+export type TLoginSchema = z.infer<typeof loginValidationSchema>;
