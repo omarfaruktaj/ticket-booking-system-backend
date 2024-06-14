@@ -4,6 +4,7 @@ interface EnvConfig {
   NODE_ENV: string | undefined;
   ACCESS_TOKEN_SECRET: string | undefined;
   ACCESS_TOKEN_EXPIRE_IN: string | undefined;
+  STRIPE_PAYMENT_SECRET: string | undefined;
 }
 
 const _envConfig: EnvConfig = {
@@ -12,6 +13,7 @@ const _envConfig: EnvConfig = {
   MONGO_URI: process.env.MONGO_URI,
   ACCESS_TOKEN_SECRET: process.env.ACCESS_TOKEN_SECRET,
   ACCESS_TOKEN_EXPIRE_IN: process.env.ACCESS_TOKEN_EXPIRE_IN,
+  STRIPE_PAYMENT_SECRET: process.env.STRIPE_PAYMENT_SECRET,
 };
 
 const envConfig = {

@@ -1,37 +1,35 @@
 import { Schema, model } from "mongoose";
-import { TBooking } from "./bookingValidation";
 import { errorMessage } from "../../constants";
+import { TPayment } from "./paymentValidation";
 
-const bookingSchema = new Schema<TBooking>(
+const paymentSchema = new Schema<TPayment>(
   {
+    paymentId: {
+      type: String,
+    },
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: [true, errorMessage.required],
     },
-    event: {
+    booking: {
       type: Schema.Types.ObjectId,
-      ref: "Event",
+      ref: "Booking",
       required: [true, errorMessage.required],
     },
-    ticketsBooked: {
+    amount: {
       type: Number,
       required: [true, errorMessage.required],
     },
     status: {
       type: String,
-      enum: ["pending", "confirmed", "cancelled"],
-      default: "pending",
-    },
-    paymentStatus: {
-      type: String,
-      enum: ["paid", "unpaid"],
-      default: "unpaid",
+      required: [true, errorMessage.required],
+      enum: ["pending", "completed", "failed"],
     },
   },
   { timestamps: true },
 );
 
-const Booking = model<TBooking>("Booking", bookingSchema);
+const Payment = model<TPayment>("Payment", paymentSchema);
 
-export default Booking;
+export default Payment;

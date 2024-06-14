@@ -1,11 +1,6 @@
 import { Schema, model } from "mongoose";
 import { TEvent } from "./eventValidation";
-
-const errorMessage = {
-  required: "The '{PATH}' field is required.",
-  min: "The value of '{PATH}' field must be at least {MIN}.",
-  date: "The '{PATH}' field must be a valid date and in the future.",
-};
+import { errorMessage } from "../../constants";
 
 const eventSchema = new Schema<TEvent>(
   {
@@ -49,7 +44,7 @@ const eventSchema = new Schema<TEvent>(
       required: [true, errorMessage.required],
     },
   },
-  { timestamps: true }
+  { timestamps: true },
 );
 
 const Event = model<TEvent>("Event", eventSchema);
