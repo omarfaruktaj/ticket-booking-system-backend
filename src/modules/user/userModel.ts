@@ -33,6 +33,11 @@ const userSchema = new Schema<TUser, UserModel>({
   profile: {
     type: String,
   },
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+  },
 });
 
 userSchema.plugin(makeFieldsPrivatePlugin, ["password"]);

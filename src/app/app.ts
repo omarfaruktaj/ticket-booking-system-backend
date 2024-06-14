@@ -5,6 +5,7 @@ import middlewares from "./middlewares";
 import routes from "./routes";
 import globalErrorHandler from "./errors";
 import AppError from "../utils/app-error";
+import "../interfaces";
 
 const app = express();
 

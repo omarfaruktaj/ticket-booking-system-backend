@@ -1,5 +1,7 @@
 import { z } from "zod";
 
+const userRoleEnum = z.enum(["user", "admin"]).default("user");
+
 export const userValidationSchema = z.object({
   name: z
     .string({
@@ -20,6 +22,7 @@ export const userValidationSchema = z.object({
       message: "Password can't be more then 50 characters long",
     }),
   profile: z.string().optional(),
+  role: userRoleEnum,
 });
 
 export const loginValidationSchema = z.object({

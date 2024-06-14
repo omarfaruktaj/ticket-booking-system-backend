@@ -24,3 +24,7 @@ export const loginService = async (data: TLoginSchema) => {
 
   return user;
 };
+
+export const getUserById = (id: string) => {
+  return User.findById(id);
+};
