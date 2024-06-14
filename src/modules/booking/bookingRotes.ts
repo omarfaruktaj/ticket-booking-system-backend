@@ -4,6 +4,7 @@ import validateRequest from "../../middlewares/validateRequest";
 import { BookingValidationSchema } from "./bookingValidation";
 import {
   createBookingController,
+  getABookingController,
   getBookingsController,
 } from "./bookingController";
 
@@ -14,5 +15,7 @@ router
   .route("/")
   .post(validateRequest(BookingValidationSchema), createBookingController)
   .get(getBookingsController);
+
+router.get("/:id", getABookingController);
 
 export default router;
