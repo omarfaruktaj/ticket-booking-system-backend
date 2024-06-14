@@ -21,3 +21,7 @@ export const createBookingService = async (data: TBooking) => {
 
   return createdBooking;
 };
+
+export const getBookingsService = (user: string) => {
+  return Booking.find({ user }).populate("event");
+};
